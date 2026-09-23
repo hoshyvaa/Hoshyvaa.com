@@ -1,0 +1,1167 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BSIT-1C</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background: linear-gradient(135deg, #0a0f2c, #000);
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* SMOOTH THEME TRANSITION ONLY (NOT HOVER ANIMATION) */
+body, header, .about-text h1, .about-text h3, 
+.about-text p, .skills span, .footer, .nav1 li a {
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* DESKTOP HEADER - EXACT ORIGINAL */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 10%;
+  position: fixed;
+  backdrop-filter: blur(10px);
+  width: 100%;
+  z-index: 1000;
+  background: rgba(10, 15, 44, 0.75);
+}
+
+body.light-mode header{
+  background: rgba(255,255,255,0.75);
+}
+
+.nav-left img.logo {
+  height: 35px;
+}
+
+.nav-center {
+  flex: 1;
+}
+
+.nav1 {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  padding-left: 5%;
+  margin: 0;
+}
+
+.nav1 li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 900;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.nav1 li a.active {
+  color: #60CFFF;
+}
+
+.nav1 li a:hover{
+  color: #2489B4;
+}
+
+#themeToggle {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+}
+
+body.light-mode #themeToggle {
+  color: black;
+}
+
+.header-buttons{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* DESKTOP HERO - EXACT ORIGINAL */
+.hero {
+  padding: 60px 10%;
+  padding-top: 10%;
+  display: flex;
+  align-items: center;
+  min-height: calc(85vh - 70px);
+}
+
+.hero-container {
+  display: flex;
+  gap: 20px;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.hero-right {
+  flex: 1;
+  max-width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hero-left {
+  flex: 1;
+  max-width: 30%;
+  height: 515px;
+  position: relative;
+  background: #0f1535;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease;
+}
+
+.hero-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.hero-text h2 {
+  color: #4fc3f7;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.hero-text p {
+  font-size: 12px;
+  color: #ccc;
+}
+
+.hero-card {
+  flex: 1;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease;
+}
+
+.hero-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-text {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  z-index: 2;
+}
+
+.hero-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+}
+
+.hero-left:hover,
+.hero-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  z-index: 5;
+  filter: brightness(1);
+}
+
+.hero-container:hover .hero-left:not(:hover),
+.hero-container:hover .hero-card:not(:hover) {
+  filter: brightness(0.7);
+}
+
+.hero-left:hover,
+.hero-card:hover {
+  box-shadow: 0 0 0 2px rgba(79,195,247,0.6), 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.hero-left:hover .hero-text h2,
+.hero-card:hover .card-text h3 {
+  color: #60CFFF;
+}
+
+/* DESKTOP ABOUT - EXACT ORIGINAL */
+.about {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  padding: 100px 10%;
+  padding-top: 10%;
+}
+
+.about img {
+  width: 320px;
+  border-radius: 15px;
+}
+
+.about-text h1 {
+  font-size: 36px;
+  font-family: "Nunito", sans-serif;
+  color: #4fc3f7;
+}
+
+.about-text h3 {
+  margin: 8px 0 15px;
+  font-weight: 800;
+  font-family: "Nunito", sans-serif;
+  color: #ccc;
+}
+
+.about-text p {
+  max-width: 450px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #aaa;
+  font-family: "Nunito", sans-serif;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(3, 90px);
+  gap: 10px;
+}
+
+.skills span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 30px;
+  border-radius: 10px;
+  background: #1a1f3c;
+  font-size: 13px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+}
+
+/* ALL OTHER STYLES REMAIN EXACTLY THE SAME */
+.resume-btn{
+  padding: 10px 22px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background:
+    radial-gradient(circle at center,
+    rgba(255,255,255,0.12) 0%,
+    rgba(10,15,44,0.95) 45%,
+    rgba(0,0,0,1) 100%);
+  box-shadow:
+    0 0 20px rgba(226, 222, 222, 0.5),
+    inset 0 0 20px rgba(212, 205, 205, 0.04);
+  transition: 0.35s ease;
+  backdrop-filter: blur(10px);
+}
+
+.resume-btn:hover{
+  transform: translateY(-2px) scale(1.03);
+  color: #60CFFF;
+  box-shadow:
+    0 0 0 2px rgba(79,195,247,0.5),
+    0 10px 30px rgba(0,0,0,0.5);
+}
+
+body.light-mode .resume-btn{
+  color: #111;
+  background:
+    radial-gradient(circle at center,
+    rgba(255,255,255,0.9) 0%,
+    rgba(240,240,240,1) 60%,
+    rgba(220,220,220,1) 100%);
+}
+
+body.light-mode .resume-btn:hover{
+  color: #2489B4;
+}
+
+/* RATES, FOOTER, RESUME MODAL - ALL ORIGINAL STYLES */
+.rates {
+  padding: 120px 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rates-container {
+  width: 120%;
+  max-width: 950px;
+  padding: 50px;
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at center,
+    rgba(255,255,255,0.10) 0%,
+    rgba(10,15,44,0.95) 45%,
+    rgba(0,0,0,1) 100%);
+  box-shadow:
+    0 0 40px rgba(0,0,0,0.6),
+    inset 0 0 80px rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+}
+
+.rates-container h1 {
+  text-align: center;
+  font-size: 64px;
+  margin-bottom: 10px;
+  color: #60CFFF;
+  font-family: "Nunito", sans-serif;
+  font-weight: 900;
+}
+
+.rates-container p {
+  font-family: "Nunito", sans-serif;
+  line-height: 1.8;
+  color: #cfcfcf;
+  font-size: 15px;
+}
+
+.intro { margin-bottom: 30px; }
+.rate-list { margin-bottom: 40px; }
+.rate-list p { font-weight: 800; color: #e6e6e6; }
+.details { margin-bottom: 20px; }
+.closing { margin-top: 40px; font-weight: 700; color: #ffffff; }
+
+.footer {
+  background-color: black;
+  color: white;
+  padding: 20px 10%;
+  margin-top: 80px;
+  font-size: 12px;
+  font-family: "Nunito", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.footer-left,
+.footer-middle,
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.footer a {
+  color: #60CFFF;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.footer a:hover {
+  color: #2489B4;
+}
+
+body.light-mode .footer {
+  background: #e0e0e0;
+  color: #111;
+}
+
+body.light-mode .footer a {
+  color: black;
+}
+
+body.light-mode .footer a:hover {
+  color: #2489B4;
+}
+
+/* RESUME MODAL - ALL ORIGINAL */
+.resume-modal{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.35s ease;
+  z-index: 2000;
+}
+
+.resume-modal.show{
+  opacity: 1;
+  visibility: visible;
+}
+
+.resume-container{
+  width: 90%;
+  max-width: 850px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at center,
+    rgba(255,255,255,0.10) 0%,
+    rgba(10,15,44,0.95) 45%,
+    rgba(0,0,0,1) 100%);
+  box-shadow:
+    0 0 40px rgba(0,0,0,0.6),
+    inset 0 0 80px rgba(255,255,255,0.03);
+  backdrop-filter: blur(12px);
+  animation: popup 0.35s ease;
+  color: white;
+}
+
+.resume-header{
+  padding: 40px 20px;
+  text-align: center;
+  color: white;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+}
+
+.resume-header img{
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  margin-bottom: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.resume-header h1{
+  font-size: 38px;
+  font-family: "Nunito", sans-serif;
+  margin-bottom: 6px;
+}
+
+.resume-header p{
+  font-size: 14px;
+  color: #f0f0f0;
+}
+
+.close-resume{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  font-size: 20px;
+  font-weight: 900;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: 0.35s ease;
+}
+
+.close-resume:hover{
+  transform: rotate(90deg) scale(1.08);
+  background: white;
+  color: #2489B4;
+}
+
+.resume-body{
+  padding: 40px;
+  color: #e5e5e5;
+}
+
+.resume-section{
+  margin-bottom: 28px;
+}
+
+.resume-section h2{
+  color: #60CFFF;
+  font-size: 24px;
+  margin-bottom: 12px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 900;
+}
+
+.resume-section p,
+.resume-section li{
+  font-size: 14px;
+  line-height: 1.9;
+  color: #cfcfcf;
+}
+
+.resume-section ul{
+  padding-left: 20px;
+}
+
+.resume-tags{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.resume-tags span{
+  background: rgba(255,255,255,0.08);
+  color: #60CFFF;
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 800;
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+}
+
+.resume-container::-webkit-scrollbar{
+  width: 8px;
+}
+
+.resume-container::-webkit-scrollbar-thumb{
+  background: #60CFFF;
+  border-radius: 20px;
+}
+
+body.light-mode {
+  background: #f5f5f5;
+  color: #111;
+}
+
+body.light-mode .nav1 li a {
+  color: #111;
+}
+
+body.light-mode .hero-left,
+body.light-mode .hero-card,
+body.light-mode .hero-right  {
+  background: #eaeaea;
+}
+
+body.light-mode .about-text h1  {
+  color: #2489B4;
+}
+
+body.light-mode .about-text h3,
+body.light-mode .about-text p {
+  color: grey;
+}
+
+body.light-mode .about-text h3 {
+  color: black;
+}
+
+body.light-mode .card-text h3{
+  color: #2489B4;
+}
+
+body.light-mode .card-text p{
+  color: white;
+}
+
+body.light-mode .hero-card::after {
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.75),
+    rgba(0,0,0,0.15),
+    transparent
+  );
+}
+
+body.light-mode .skills span {
+  background: #ddd;
+  color: #111;
+}
+
+body.light-mode .footer {
+  background: #e0e0e0;
+  color: #111;
+}
+
+body.light-mode .rates-container {
+  background:
+    radial-gradient(circle at center,
+    rgba(255,255,255,0.9) 0%,
+    rgba(240,240,240,1) 60%,
+    rgba(220,220,220,1) 100%);
+}
+
+body.light-mode .rates-container p {
+  color: #333;
+}
+
+body.light-mode .rate-list p {
+  color: #111;
+}
+
+body.light-mode .closing {
+  color: #000;
+}
+
+body.light-mode .resume-container{
+  background:
+    radial-gradient(circle at center,
+    rgba(255,255,255,0.95) 0%,
+    rgba(240,240,240,1) 60%,
+    rgba(220,220,220,1) 100%);
+  color: #111;
+}
+
+body.light-mode .resume-header h1{
+  font-size: 38px;
+  font-family: "Nunito", sans-serif;
+  margin-bottom: 6px;
+  color: #2489B4;
+}
+
+body.light-mode .resume-header p{
+  font-size: 14px;
+  color: #b3a2a2;
+}
+
+body.light-mode .resume-section p,
+body.light-mode .resume-section li{
+  color: #333;
+}
+
+body.light-mode .resume-tags span{
+  background: rgba(255,255,255,0.7);
+  color: #2489B4;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+body.light-mode .resume-header{
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+body.light-mode .close-resume{
+  background: rgba(0,0,0,0.08);
+  color: #111;
+}
+
+body.light-mode .close-resume:hover{
+  background: #2489B4;
+  color: white;
+}
+
+
+@media (min-width: 1025px) {
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .hero-container {
+    gap: 15px;
+  }
+  
+  .hero-left {
+    height: 450px;
+  }
+  
+  .about {
+    gap: 40px;
+    padding: 80px 8%;
+  }
+}
+
+@media (max-width: 768px) {
+  /* MOBILE MENU */
+  .mobile-menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+    padding: 5px;
+    order: 3;
+  }
+  
+  body.light-mode .mobile-menu-toggle {
+    color: #333;
+  }
+  
+  .nav-center {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    height: 100vh;
+    background: rgba(10, 15, 44, 0.98);
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    padding: 100px 0;
+    transition: left 0.3s ease;
+    z-index: 999;
+    backdrop-filter: blur(10px);
+  }
+  
+  body.light-mode .nav-center {
+    background: rgba(255,255,255,0.98);
+  }
+  
+  .nav-center.active {
+    left: 0;
+  }
+  
+  .nav1 {
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 0;
+    align-items: center;
+  }
+  
+  .nav1 li a {
+    font-size: 18px;
+  }
+  
+  header {
+    padding: 15px 5%;
+  }
+  
+  .header-buttons {
+    gap: 10px;
+  }
+  
+  .hero {
+    padding: 110px 5% 60px;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-container {
+    flex-direction: column;
+    gap: 25px;
+    max-width: 100%;
+  }
+  
+  .hero-left {
+    max-width: 100%;
+    height: 350px;
+  }
+  
+  .hero-right {
+    max-width: 100%;
+    gap: 20px;
+  }
+  
+  .hero-card {
+    height: 250px;
+  }
+  
+  .about {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+    padding: 100px 5%;
+  }
+  
+  .about img {
+    width: 100%;
+    max-width: 350px;
+  }
+  
+  .about-text h1 {
+    font-size: 32px;
+  }
+  
+  .skills {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .skills span {
+    width: 100%;
+    height: 35px;
+  }
+  
+  /* RATES MOBILE */
+  .rates {
+    padding: 100px 5%;
+  }
+  
+  .rates-container {
+    width: 100%;
+    padding: 40px 30px;
+  }
+  
+  .rates-container h1 {
+    font-size: 42px;
+  }
+  
+  /* FOOTER MOBILE */
+  .footer {
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px 5%;
+    text-align: center;
+  }
+  
+  .footer-left,
+  .footer-middle,
+  .footer-right {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 12px 20px;
+  }
+  
+  .hero {
+    padding: 110px 20px 50px;
+  }
+  
+  .hero-left {
+    height: 300px;
+  }
+  
+  .hero-card {
+    height: 220px;
+  }
+  
+  .about {
+    padding: 80px 20px;
+  }
+  
+  .about-text h1 {
+    font-size: 28px;
+  }
+  
+  .rates-container {
+    padding: 30px 25px;
+  }
+  
+  .rates-container h1 {
+    font-size: 36px;
+  }
+  
+  .resume-container {
+    width: 95%;
+    margin: 10px;
+  }
+}
+
+
+@media (max-width: 360px) {
+  .hero-left {
+    height: 280px;
+  }
+  
+  .hero-card {
+    height: 200px;
+  }
+  
+  .about-text h1 {
+    font-size: 24px;
+  }
+  
+  .rates-container h1 {
+    font-size: 32px;
+  }
+  
+  .skills {
+    grid-template-columns: 1fr;
+  }
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+@keyframes popup {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+
+<header> 
+<button class="mobile-menu-toggle" id="mobileMenuToggle" style="display: none;">☰</button>
+
+  <div class="nav-left">
+    <a href="#home">
+      <img src="LOGO-removebg-preview.png" class="logo" alt="Logo">
+    </a>
+  </div>
+
+  <div class="nav-center" id="navCenter">
+    <ul class="nav1">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#rates">Rates</a></li>
+      <li><a href="#footer">Contacts</a></li>
+    </ul>
+  </div>
+
+  <div class="header-buttons">
+    <button class="resume-btn" id="openResume">Resume</button>
+    <button id="themeToggle">🌙</button>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-container">
+    <div class="hero-left">
+      <img src="STOPVER.png" alt="Aerial">
+      <div class="hero-text">
+        <h2>AERIAL</h2>
+        <p>For immersive view from the top. Cinematic outdoor shots</p>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-card">
+        <img src="GOGGLES.jpg" alt="Indoors">
+        <div class="card-text">
+          <h3>INDOORS</h3>
+          <p>Fly safely through tight spaces</p>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <img src="DJI.jpg" alt="Sports">
+        <div class="card-text">
+          <h3>SPORTS</h3>
+          <p>Fast pace shots for action scenes</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="image_about">
+    <img src="ABOUT.png" alt="Joshua Tan">
+  </div>
+
+  <div class="about-text">
+    <h1>Joshua Tan</h1>
+    <h3>FPV Drone Pilot</h3>
+    <p>
+      I fly FPV Drone for indoors, aerial, photography, videography, and sports.
+      I am currently studying BSIT at University of Eastern Pangasinan.
+      I build skills in programming, systems, and web development.
+      I apply what I learn to real projects.
+    </p>
+    <div class="skills">
+      <span>C#</span>
+      <span>Python</span>
+      <span>C++</span>
+      <span>Java</span>
+      <span>PHP</span>
+      <span>MySQL</span>
+    </div>
+  </div>
+</section>
+
+<section class="rates" id="rates">
+  <div class="rates-container">
+    <h1>Rates</h1>
+    <p class="intro">
+      Thank you for your interest in my FPV drone shots! Here are my current rates:
+    </p>
+    <div class="rate-list">
+      <p>₱3,000 – Raw and stabilized FPV footage</p>
+      <p>₱3,000–₱5,000 – Depending on the flight pattern and difficulty</p>
+      <p>₱8,000 – With full video editing included</p>
+    </div>
+    <p class="details">
+      Each project is unique, so pricing may vary slightly based on the location,
+      complexity of the flight, and specific requests.
+    </p>
+    <p class="details">
+      If you could share a few details about your project (location, duration,
+      and the kind of shots you're aiming for), I'd be happy to give you a more
+      accurate quote.
+    </p>
+    <p class="closing">
+      Looking forward to working with you and capturing something awesome!
+    </p>
+  </div>
+</section>
+
+<div class="resume-modal" id="resumeModal">
+  <div class="resume-container">
+    <div class="resume-header">
+      <img src="ABOUT.png" alt="Profile">
+      <h1>Joshua L. Tan</h1>
+      <p>FPV Drone Pilot | BSIT Student</p>
+      <button class="close-resume" id="closeResume">✕</button>
+    </div>
+    <div class="resume-body">
+      <div class="resume-section">
+        <p>Brgy. Agno, Tayug, Pangasinan</p>
+        <p>📞 +63 993 5939 5756</p>
+        <p>✉️ joshualacsinatan@gmail.com</p>
+      </div>
+      <div class="resume-section">  
+        <p>Hi! I'm <b>Joshua Tan</b>, an FPV Drone Pilot and BSIT student at the University of Eastern Pangasinan. 
+          I am passionate about programming, systems development, and web development. I continuously improve 
+          my technical and creative skills by applying what I learn to real-world projects and hands-on experiences. 
+          I aim to grow professionally while creating innovative and meaningful digital solutions.</p>        
+      </div>
+      <div class="resume-section">
+        <h2>Skills</h2>
+        <div class="resume-tags">
+          <span>C++</span>
+          <span>Html/Css</span>
+          <span>Java</span>
+          <span>Python</span>
+          <span>MySQL</span>
+          <span>C#</span>
+        </div>
+      </div>
+      <div class="resume-section">
+        <h2>Education</h2>
+        <ul>
+          <li><b>Bachelor of Science in Information Technology (BSIT)</b>
+          <br> University Of Eastern Pangasinan – [Binalonan, Pangasinan] 
+          <br> Expected Graduation: 2029</li>
+        </ul>
+      </div>
+      <div class="resume-section">
+        <h2>Additional Information</h2>
+        <ul>
+          <li>Strong communication skills</li> 
+          <li>Ability to multitask and work under pressure</li>
+          <li>Team player with a positive attitude</li>
+          <li>Quick learner and adaptable</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer" id="footer">
+  <div class="footer-left">
+    <a href="https://www.facebook.com/tan.jusuuwaaa" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/tf.hoshva/" target="_blank">Instagram</a>
+    <a href="https://www.youtube.com/@hoshyva" target="_blank">Youtube</a>
+  </div>
+  <div class="footer-middle">
+    <p>© Created and Design by Hoshyva. All rights reserved.</p>
+  </div>
+  <div class="footer-right">
+    <p>+63 993 5939 5756 <br>
+      joshualacsinatan@gmail.com
+    </p>
+  </div>
+</footer>
+
+<script>
+const toggleBtn = document.getElementById("themeToggle");
+const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+const navCenter = document.getElementById("navCenter");
+const resumeModal = document.getElementById("resumeModal");
+const openResume = document.getElementById("openResume");
+const closeResume = document.getElementById("closeResume");
+
+if (localStorage.getItem("theme") === "light") {
+  document.body.classList.add("light-mode");
+  toggleBtn.textContent = "☀️";
+}
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+  if (document.body.classList.contains("light-mode")) {
+    localStorage.setItem("theme", "light");
+    toggleBtn.textContent = "☀️";
+  } else {
+    localStorage.setItem("theme", "dark");
+    toggleBtn.textContent = "🌙";
+  }
+});
+
+if (window.innerWidth <= 768) {
+  mobileMenuToggle.style.display = "block";
+}
+
+mobileMenuToggle?.addEventListener("click", () => {
+  navCenter.classList.toggle("active");
+});
+
+document.querySelectorAll(".nav1 a").forEach(link => {
+  link.addEventListener("click", () => {
+    navCenter.classList.remove("active");
+  });
+});
+
+openResume.addEventListener("click", () => {
+  resumeModal.classList.add("show");
+});
+
+closeResume.addEventListener("click", () => {
+  resumeModal.classList.remove("show");
+});
+
+resumeModal.addEventListener("click", (e) => {
+  if (e.target === resumeModal) {
+    resumeModal.classList.remove("show");
+  }
+});
+
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav1 a");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 120;
+    const sectionHeight = section.clientHeight;
+    if (scrollY >= sectionTop) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === "#" + current) {
+      link.classList.add("active");
+    }
+  });
+});
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 768) {
+    navCenter.classList.remove("active");
+    mobileMenuToggle.style.display = "none";
+  } else {
+    mobileMenuToggle.style.display = "block";
+  }
+});
+</script>
+
+</body>
+</html>
